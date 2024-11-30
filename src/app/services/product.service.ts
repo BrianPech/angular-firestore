@@ -8,6 +8,8 @@ import {
   getDocs,
   addDoc,
   deleteDoc,
+  updateDoc,
+  doc,
 } from '@angular/fire/firestore';
 import { DocumentReference } from '@angular/fire/firestore';
 
@@ -72,7 +74,28 @@ export class ProductService {
     }
   }
 
-  async updatePoduct(product: Product): Promise<void> {}
+  async updateProduct(product: Product): Promise<void> {
+    if (!product.$key) {
+      console.warn('Cannot update product: key is missing.');
+      return;
+    }
+
+    const productRef = doc(this.firestore, 'products', product.$key);
+
+    try {
+      await updateDoc(productRef, {
+        // Update the fields you want to modify
+        name: product.name,
+        price: product.price,
+        category: product.category,
+        location: product.location,
+      });
+      console.log('Producto actualizado:', product.$key);
+    } catch (error) {
+      console.error('Error al actualizar producto:', error);
+      throw error; // Re-throw the error for further handling
+    }
+  }
 
   async deleteProduct($key: string): Promise<void> {
     const productsCollection = collection(this.firestore, 'products');

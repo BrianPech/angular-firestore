@@ -8,7 +8,7 @@
           <td>{{ product.name }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <a class="btn btn-secondary text-white">
+            <a class="btn btn-secondary text-white" (click)="onEdit(product)">
               <i class="ti ti-edit"></i>
             </a>
             <a class="btn btn-danger text-white" (click)="onDelete(product)">

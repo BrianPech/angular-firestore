@@ -21,6 +21,10 @@ export class ProductComponent implements OnInit {
       this.productService.insertProduct(productForm.value).then(() => {
         console.log('Producto insertado con éxito', { productForm });
       });
+    } else {
+      this.productService.updateProduct(productForm.value).then(() => {
+        console.log('Producto actualizado con éxito', { productForm });
+      });
     }
     this.resetForm(productForm);
     this.notifyReloadProducts();

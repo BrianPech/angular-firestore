@@ -34,6 +34,10 @@ export class ProductListComponent implements OnInit, OnChanges {
     }
   }
 
+  onEdit(product: Product) {
+    this.productService.selectedProduct = Object.assign({}, product);
+  }
+
   onDelete(product: Product) {
     this.productService.deleteProduct(product.$key!).then(() => {
       this.productDeleted.emit(true);
