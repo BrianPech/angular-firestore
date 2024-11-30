@@ -57,7 +57,9 @@
 
       <div class="form-group d-flex column-gap-4">
         <button class="btn btn-primary" type="submit">
-          <i class="ti ti-circle-plus"></i> Add A Product
+          <i class="ti ti-circle-plus"></i>
+          @if (productService.selectedProduct.$key != null) { Update Product }
+          @else { Add Product }
         </button>
         <button
           class="btn btn-secondary"
