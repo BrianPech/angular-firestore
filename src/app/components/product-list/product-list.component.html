@@ -7,6 +7,14 @@
         <tr>
           <td>{{ product.name }}</td>
           <td>{{ product.price }}</td>
+          <td>
+            <a class="btn btn-secondary text-white">
+              <i class="ti ti-edit"></i>
+            </a>
+            <a class="btn btn-danger text-white" (click)="onDelete(product)">
+              <i class="ti ti-trash"></i>
+            </a>
+          </td>
         </tr>
         }
       </tbody>

@@ -1,1 +1,72 @@
-<p>product works!</p>
+<div class="card mt-5">
+  <div class="card-body">
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+      <!-- TO UPDATE -->
+      <input
+        type="hidden"
+        name="$key"
+        #$key="ngModel"
+        [(ngModel)]="productService.selectedProduct.$key"
+      />
+
+      <div class="form-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          #name="ngModel"
+          [(ngModel)]="productService.selectedProduct.name"
+          placeholder="Add A Product"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="category"
+          #category="ngModel"
+          [(ngModel)]="productService.selectedProduct.category"
+          placeholder="Add A Category"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="location"
+          #location="ngModel"
+          [(ngModel)]="productService.selectedProduct.location"
+          placeholder="Add A Location"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input
+            type="number"
+            class="form-control"
+            name="price"
+            #price="ngModel"
+            [(ngModel)]="productService.selectedProduct.price"
+            placeholder="Add A Price"
+          />
+        </div>
+      </div>
+
+      <div class="form-group d-flex column-gap-4">
+        <button class="btn btn-primary" type="submit">
+          <i class="ti ti-circle-plus"></i> Add A Product
+        </button>
+        <button
+          class="btn btn-secondary"
+          type="reset"
+          (click)="resetForm(productForm)"
+        >
+          <i class="ti ti-refresh"></i> Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
